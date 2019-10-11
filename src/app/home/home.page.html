@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar align="center" color="primary">
+    <ion-title>
+      Weather Service
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <ion-card ion-padding color="secondary">
+        <ion-input [(ngModel)]="cityname" placeholder="enter city"><ion-icon name="search"></ion-icon></ion-input>
+        <div align="right"><ion-button (click)="getWeather()"><ion-icon name="search"></ion-icon></ion-button></div>
+    </ion-card>
+<div class="bg">
+      <ion-card>
+    <div class="ion-padding">
+      <h2 class = "h2">
+    {{weatherData?.name}},{{weatherData?.sys.country}}</h2>
+    <div align="center">
+        <ion-img [src]="['http://openweathermap.org/img/wn/01d@2x.png']" alt="clear" style = "width:200px;height:auto;" *ngIf = "weatherData?.weather[0].description == 'clear sky'" ></ion-img>
+        <ion-img [src]="['http://openweathermap.org/img/wn/02d@2x.png']" alt="few clouds" style = "width:200px;height:auto;" *ngIf = "weatherData?.weather[0].description == 'few clouds'"></ion-img>
+        <ion-img [src]="['http://openweathermap.org/img/wn/03d@2x.png']" alt="scattered"style = "width:200px;height:auto;"  *ngIf = "weatherData?.weather[0].description == 'scattered clouds'" ></ion-img>
+        <ion-img [src]="['http://openweathermap.org/img/wn/04d@2x.png']" alt="broken clouds" style = "width:200px;height:auto;" *ngIf = "weatherData?.weather[0].description == 'broken clouds'" ></ion-img>
+        <ion-img [src]="['http://openweathermap.org/img/wn/09d@2x.png']" alt="shower rain"style = "width:200px;height:auto;"  *ngIf = "weatherData?.weather[0].description == 'shower rain'"></ion-img>
+        <ion-img [src]="['http://openweathermap.org/img/wn/10d@2x.png']" alt="rain" style = "width:200px;height:auto;" *ngIf = "weatherData?.weather[0].description == 'rain'" ></ion-img>
+        <ion-img [src]="['http://openweathermap.org/img/wn/11d@2x.png']" alt="thunderstorm" style = "width:200px;height:auto;" *ngIf = "weatherData?.weather[0].description == 'thunderstorm'"></ion-img>
+        <ion-img [src]="['http://openweathermap.org/img/wn/13d@2x.png']" alt="snow" style = "width:200px;height:auto;" *ngIf = "weatherData?.weather[0].description == 'snow'" ></ion-img>
+        <ion-img [src]="['http://openweathermap.org/img/wn/50d@2x.png']" alt="mist" style = "width:200px;height:auto;" *ngIf = "weatherData?.weather[0].description == 'mist'" ></ion-img>
+    </div>
+
+    <h3 class = "h3">
+      {{weatherData?.weather[0].description}}</h3>
+    <ion-list >
+      <ion-item>
+        <ion-label>Pressure: {{weatherData?.main.pressure}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Humidity: {{weatherData?.main.humidity}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Temperature: {{temp}} <sup>&deg;</sup>C</ion-label>
+      </ion-item>
+    </ion-list>
+    <br>
+    </div>
+      </ion-card>
+</div>
+</ion-content>
